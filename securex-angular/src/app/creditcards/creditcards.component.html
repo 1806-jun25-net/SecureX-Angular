@@ -1,0 +1,11 @@
+<h1>All credit cards</h1>
+
+<ul>
+  <li *ngFor="let creditcard of creditcards$">
+    <a routerLink="/{{creditcard.id}}">Credit Card #{{ creditcard.creditCardNumber}}</a>
+    <ul>
+      <li>Credit Limit: {{creditcard.creditLimit | currency}}</li>
+      <li>Current Debt: {{creditcard.currentDebt | currency}}</li>
+    </ul>
+  </li>
+</ul>

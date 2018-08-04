@@ -1,0 +1,12 @@
+<h1>All transactions</h1>
+
+<ul>
+  <li *ngFor="let transaction of transactions$">
+    <a routerLink="/{{transaction.id}}">Recipient: {{ transaction.recipient }}</a>
+    <ul>
+      <li>From Account # {{ transaction.accountId }}</li>
+      <li>Date of transaction: {{ transaction.dateOfTransaction | date:'long' }}</li>
+      <li>Transaction amount: {{ transaction.transactionAmount | currency}}</li>
+    </ul>
+  </li>
+</ul>

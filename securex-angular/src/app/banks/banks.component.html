@@ -1,0 +1,10 @@
+<h1>All banks</h1>
+
+<ul>
+  <li *ngFor="let bank of banks$">
+    <a routerLink="/{{bank.id}}">{{ bank.city}}</a>
+    <ul>
+      <li>Reserves: {{ bank.reserves | currency}}</li>
+    </ul>
+  </li>
+</ul>

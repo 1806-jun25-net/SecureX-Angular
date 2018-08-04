@@ -1,0 +1,11 @@
+<h1>All accounts</h1>
+
+<ul>
+  <li *ngFor="let account of accounts$">
+    <a routerLink="/{{account.id}}">Account #00000{{ account.id}}</a>
+    <ul>
+      <li>Account type: {{account.accountType}}</li>
+      <li>Funds: {{account.funds | currency}}</li>
+    </ul>
+  </li>
+</ul>
