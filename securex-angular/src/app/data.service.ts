@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Login } from './login';
+
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +29,10 @@ export class DataService {
     return this.http.get('http://securex-api.azurewebsites.net/api/transaction')
   }
 
-  postLogin() {
-    //return this.http.post('http://securex-api.azurewebsites.net/api/login')
+  postLogin(login: Login, success, failure) {
+    let url = "http://securex-api.azurewebsites.net/api/login/login";
+    let request = this.http.post(url, login);
+    let promise = request.toPromise();
+    promise.then(success, failure);
   }
 }
