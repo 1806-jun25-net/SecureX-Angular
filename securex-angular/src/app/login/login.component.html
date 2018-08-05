@@ -7,20 +7,22 @@
 </head>
 
 <body class="container" id="LoginForm">
-    <div class="login-form">
+    <div [hidden]="submitted" class="login-form">
       <div class="main-div">
         <div class="panel">
           <h2>Admin Login</h2>
           <p>Please enter your username and password</p>
         </div>
-        <form id="Login">
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit()" id="Login">
           <div class="form-group">
-          <input type="name" class="form-control" id="inputUser" placeholder="Username">
-          </div>
+          <input type="text" class="form-control" id="inputUser" required [(ngModel)]="login.userName" name="userName" placeholder="Username" #userName="ngModel">
+          <div [hidden]="userName.valid || userName.pristine"class="alert alert-danger">Username is required</div>
+        </div>
           <div class="form-group">
-          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-          </div>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <input type="password" class="form-control" id="inputPassword" required [(ngModel)]="login.password" name="password" placeholder="Password" #password="ngModel">
+          <div [hidden]="password.valid || password.pristine"class="alert alert-danger">Password is required</div>
+        </div>
+          <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Login</button>
         </form>
       </div>
     </div>
